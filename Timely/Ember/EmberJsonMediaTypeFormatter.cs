@@ -24,12 +24,11 @@ namespace Moravia.Timely.Formatters
                     return GetDefaultValueForType(type);
                 }
 
-                var properties = (data[prefix] as JObject).Properties().Select(p => p.Name);
+                // var properties = (data[prefix] as JObject).Properties().Select(p => p.Name);
 
                 var serializer = JsonSerializer.Create(SerializerSettings);
 
                 Entity entity = data[prefix].ToObject(type, serializer) as Entity;
-                entity.properties = properties.AsEnumerable();
                 return entity;
             });
         }

@@ -9,6 +9,5 @@ namespace Moravia.Timely.Models
     {
         public string name { get; set; }
         public string email { get; set; }
-        public string position { get; set; }
     }
 }

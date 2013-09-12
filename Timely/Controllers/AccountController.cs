@@ -5,17 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Moravia.Timely.Components;
+using Moravia.Timely.Models;
 
 namespace Moravia.Timely.Controllers
 {
     public class AccountController : Controller
     {
-        public ActiveDirectoryComponent ActiveDirectoryComponent { get; set; }
+        private TimelyContext Context { get; set; }
 
-        public AccountController(ActiveDirectoryComponent activeDirectoryComponent)
+        public AccountController(TimelyContext context)
         {
-            ActiveDirectoryComponent = activeDirectoryComponent;
+            Context = context;
         }
 
         [HttpGet]
@@ -32,12 +32,7 @@ namespace Moravia.Timely.Controllers
             if (ModelState.IsValid)
             {
                 ActionResult response;
-                response = TryAuthenticate("CZ", username, password, "Moravia|Vendor");
-                if (response != null)
-                {
-                    return response;
-                }
-                response = TryAuthenticate("MNET", username, password, "Vendor");
+                response = TryAuthenticate("CZ", username, password, "Moravia");
                 if (response != null)
                 {
                     return response;
@@ -52,7 +47,18 @@ namespace Moravia.Timely.Controllers
         {
             if (Membership.Providers[provider].ValidateUser(username, password))
             {
-                //ActiveDirectoryComponent.ImportUser(provider, username);
+                // Import user to the database
+                if (!Context.Users.Any(u => u.name == username))
+                {
+                    var adProvider = Membership.Providers[provider] as ActiveDirectoryMembershipProvider;
+                    var user = adProvider.GetUser(username, true);
+                    Context.Users.Add(new User
+                    {
+                        name = user.UserName,
+                        email = user.Email
+                    });
+                    Context.SaveChanges();
+                }
 
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
                   username,
