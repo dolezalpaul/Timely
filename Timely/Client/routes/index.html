@@ -1,0 +1,67 @@
+﻿<div class="row">
+    <h1>Getting started</h1>
+    <hr />
+    <p class="lead">This project brings a template to anyone, who would like to build the challenging application on following technology stack.</p>
+
+    <h3>Technology stack</h3>
+    <p>Here is the list of technologies used in this project with links to their sites.</p>
+    <ul>
+        <li><a href="http://www.mongodb.org/" target="_blank">MongoDB</a></li>
+        <li><a href="http://www.asp.net/web-api" target="_blank">ASP.NET WebApi</a></li>
+        <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+        <li><a href="http://handlebarsjs.com/" target="_blank">Handlebars</a></li>
+        <li><a href="http://emberjs.com/" target="_blank">Ember.js</a></li>
+        <li><a href="https://github.com/emberjs/data" target="_blank">Ember Data</a></li>
+    </ul>
+
+    <h3>Development Enhancers</h3>
+    <p>This project contains a lot of enhancers that make this cocktail of technologies work together really well. Read on to discover more.</p>
+
+    <h4>Entity</h4>
+    <p>First of all we need some base class for all our models.</p>
+    <pre>
+public interface IPartialUpdate
+{
+    IEnumerable&lt;String&gt; properties { get; }
+}
+
+public class Entity : IPartialUpdate
+{
+    [BsonRepresentation(BsonType.ObjectId)]
+    public String id { get; set; }
+    public DateTime created_at { get; set; }
+    public DateTime updated_at { get; set; }
+
+    [BsonIgnore]
+    public IEnumerable&lt;String&gt; properties { get; set; }
+}</pre>
+
+    <h4>Repository</h4>
+    <p>Then there is implementation of Repository pattern for MongoDB with support of partial update of entities.</p>
+    <pre>
+public interface IRepository&lt;TEntity&gt; where TEntity : Entity
+{
+    TEntity Create(TEntity entity);
+    IQueryable&lt;TEntity&gt Read();
+    TEntity Read(string id);
+    bool Update(string id, TEntity entity);
+    bool Delete(string id);
+
+    MongoCollection&lt;TEntity&gt Collection { get; }
+    MongoDatabase Database { get; }
+}</pre>
+
+    <h4>HandlebarsBundle</h4>
+    <p>Another important component is HandlebarsBundle that allows compile Handlebar templates if Optimizations are enabled.</p>
+    <p><strong>Usage</strong></p>
+    <pre>
+HandlebarsCompiler.PathToHandlebars = HttpContext.Current.Server.MapPath("~/Scripts/handlebars.js");
+HandlebarsCompiler.PathToEmberCompiler = HttpContext.Current.Server.MapPath("~/Scripts/ember-template-compiler.js");
+
+bundles.Add(new HandlebarsBundle("~/bundles/handlebars")
+    .IncludeDirectory("~/Client", "*.html", true));</pre>
+    <p>You can also customize the way how templates are named if you implement <code>ITemplateName</code> interface.</p>
+
+    <h4>EmberJsonMediaTypeFormatter</h4>
+    <p>This components allows to support conventions of Ember Data library when comunicating with our REST API.</p>
+</div>

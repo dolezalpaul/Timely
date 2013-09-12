@@ -1,0 +1,141 @@
+﻿.navbar {
+  background-image: none;
+  background-repeat: repeat-x;
+  border-radius: 0;
+  filter: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+form.navbar-form.navbar-right {
+  margin-right: -15px;
+  padding-right: 0;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html,
+body,
+#application-container {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+
+  margin: 0 auto -61px;
+  /* Pad bottom by footer height */
+
+  padding: 0 0 60px;
+}
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+#wrap > .container {
+  padding: 70px 15px 15px;
+}
+.container .credit {
+  margin: 20px 0;
+}
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.portal-settings {
+  position: relative;
+  padding: 45px 15px 15px;
+  border: 1px solid #ddd;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #fff;
+  border-radius: 4px;
+}
+/* Echo out a label for the example */
+.portal-settings:after {
+  content: "Portal Settings";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.portal-settings > .form-group:last-child {
+  margin-bottom: 0;
+}
+.panel-heading > .btn {
+  margin-top: -5px;
+  margin-left: 5px;
+}
+.panel-heading > .panel-data {
+  float: right;
+  margin-right: 10px;
+}
+.callout {
+  margin: 5px 0 0 0;
+  padding: 5px 10px 5px 10px;
+  border-left: 3px solid #eee;
+  min-height: 40px;
+}
+.callout input[type="text"] {
+  float: right;
+  width: 300px;
+}
+.callout .comment {
+  padding: 6px 0 0 100px;
+}
+.callout .btn {
+  margin-top: -2px;
+}
+.callout-danger {
+  background-color: #fcf2f2;
+  border-color: #dFb5b4;
+}
+.callout-warning {
+  background-color: #fefbed;
+  border-color: #f1e7bc;
+}
+.unit-placeholder {
+  margin: 0 1px;
+  padding: 0px 6px 1px 6px;
+  position: relative;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 13px;
+  color: #333;
+  cursor: default;
+  border: 1px solid #aaaaaa;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #e4e4e4;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+  background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: -o-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: -ms-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+}

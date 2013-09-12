@@ -1,0 +1,12 @@
+﻿@section scripts{
+    <script type="text/javascript">
+        (function () {
+            window.User = Ember.Object.create({
+                name: '@User.Identity.Name',
+                isAuthenticated: @(User.Identity.IsAuthenticated.ToString().ToLower()),
+                isVendor: @((!User.IsInRole("Moravia")).ToString().ToLower()),
+                isMoravia: @(User.IsInRole("Moravia").ToString().ToLower())
+            });
+        })();
+    </script>
+}
