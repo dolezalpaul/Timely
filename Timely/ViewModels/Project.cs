@@ -5,9 +5,8 @@ using System.Web;
 
 namespace Moravia.Timely.ViewModels
 {
-    public class Team : ViewModel
+    public class Project : ViewModel
     {
         public string name { get; set; }
-        public List<int> users { get; set; }
     }
 }

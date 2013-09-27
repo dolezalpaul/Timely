@@ -190,8 +190,10 @@
     <Compile Include="Business\Rules\IBusinessRule.cs" />
     <Compile Include="Business\Validators\BusinessValidator.cs" />
     <Compile Include="Business\Validators\IBusinessValidator.cs" />
+    <Compile Include="Controllers\FavoritesController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RestController.cs" />
-    <Compile Include="Controllers\TeamsController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Helpers\SimpleInjectorWebApiDependencyResolver.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -209,7 +211,11 @@
     <Compile Include="Handlebars\HandlebarTemplate.cs" />
     <Compile Include="Handlebars\ITemplateName.cs" />
     <Compile Include="Handlebars\ScriptEngine.cs" />
-    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\Favorite.cs" />
+    <Compile Include="Models\Period.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TimelyContext.cs" />
     <Compile Include="Models\TimelyContextInitializer.cs" />
     <Compile Include="Models\User.cs" />
@@ -218,7 +224,9 @@
     <Compile Include="Business\Rules\BusinessRule.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\Service.cs" />
-    <Compile Include="ViewModels\Team.cs" />
+    <Compile Include="ViewModels\Favorite.cs" />
+    <Compile Include="ViewModels\Project.cs" />
+    <Compile Include="ViewModels\Task.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>

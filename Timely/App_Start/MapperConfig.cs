@@ -101,7 +101,7 @@ namespace Moravia.Timely
             }
 
             AutoMapperExtension.Container = container;
-            Mapper.CreateMap<Models.Team, ViewModels.Team>().IncludeMany(t => t.users);
+            //Mapper.CreateMap<Models.Team, ViewModels.Team>().IncludeMany(t => t.users);
         }
     }
 }

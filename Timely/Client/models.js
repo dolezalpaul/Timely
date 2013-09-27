@@ -10,8 +10,3 @@ App.User = DS.Model.extend({
     name: attr({ type: 'string' }),
     email: attr({ type: 'string' })
 });
-
-App.Team = DS.Model.extend({
-    name: attr({ type: 'string' }),
-    users: DS.hasMany('user')
-});

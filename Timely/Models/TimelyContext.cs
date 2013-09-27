@@ -19,20 +19,27 @@ namespace Moravia.Timely.Models
             Database.SetInitializer(new TimelyContextInitializer());
         }
 
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Task> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Team> Teams { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Period> Periods { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Team>()
-                .HasMany(c => c.users)
-                .WithMany()
-                .Map(x =>
-                    {
-                        x.MapLeftKey("team_id");
-                        x.MapRightKey("user_id");
-                        x.ToTable("TeamMember");
-                    });
+            modelBuilder.Entity<Activity>().Property(a => a.spent_time).HasPrecision(4, 2);
+            modelBuilder.Entity<Activity>().Property(a => a.adjusted_time).HasPrecision(4, 2);
+
+            //modelBuilder.Entity<Team>()
+            //    .HasMany(c => c.users)
+            //    .WithMany()
+            //    .Map(x =>
+            //        {
+            //            x.MapLeftKey("team_id");
+            //            x.MapRightKey("user_id");
+            //            x.ToTable("TeamMember");
+            //        });
             
             base.OnModelCreating(modelBuilder);
         }

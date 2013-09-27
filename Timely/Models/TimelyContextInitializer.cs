@@ -14,17 +14,38 @@ namespace Moravia.Timely.Models
             var users = new List<User>()
             {
                 new User() { name = "Administrator", email = "premyslk@moravia.com" },
-                new User() { name = "Guest", email = "premyslk@moravia.com" }
+                new User() { name = "Guest", email = "premyslk@moravia.com" },
+                new User() { name = "PremyslK", email = "premyslk@moravia.com" }
             };
 
-            users.ForEach(u => context.Users.Add(u));
+            users.ForEach(user => context.Users.Add(user));
 
-            var teams = new List<Team>()
+            var projects = new List<Project>()
             {
-                new Team() { name = "Moravia", users = users }
+                new Project() { name = "Timely" },
+                new Project() { name = "Symfonie" }
             };
 
-            teams.ForEach(t => context.Teams.Add(t));
+            projects.ForEach(project => context.Projects.Add(project));
+
+            var tasks = new List<Task>()
+            {
+                new Task() { name = "Programming" },
+                new Task() { name = "Grooming" },
+                new Task() { name = "Planning" },
+                new Task() { name = "Surfing" }
+            };
+
+            tasks.ForEach(task => context.Tasks.Add(task));
+
+            var favorites = new List<Favorite>()
+            {
+                new Favorite() { user = users[2], project = projects[1], task = tasks[0] }
+            };
+
+            favorites.ForEach(favorite => context.Favorites.Add(favorite));
+
+            context.SaveChanges();
         }
     }
 }
