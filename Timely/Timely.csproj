@@ -232,6 +232,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client\app.js" />
+    <Content Include="Client\components\dropdown-picker\dropdown-picker.html" />
+    <Content Include="Client\components\dropdown-picker\dropdown-picker.js" />
+    <Content Include="Client\components\dropdown-picker\picker.css" />
+    <Content Include="Client\components\dropdown-picker\picker.min.css" />
+    <Content Include="Client\components\dropdown.js" />
     <Content Include="Client\models.js" />
     <Content Include="Client\router.js" />
     <Content Include="Client\routes\application.html" />
@@ -240,6 +245,7 @@
     <Content Include="Client\routes\teams\route.js" />
     <Content Include="Client\routes\teams\view.js" />
     <Content Include="Client\routes\users\default.html" />
+    <Content Include="Client\routes\users\route.js" />
     <Content Include="Client\store.js" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
@@ -258,6 +264,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\site.less" />
+    <Content Include="Client\components\dropdown-picker\picker.less" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -318,7 +325,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53676</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:22274/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

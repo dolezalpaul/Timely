@@ -1,0 +1,21 @@
+﻿<button type="button" class="btn btn-toggle" {{action toggle}}>
+    {{#if icon}}<i {{bindAttr class="icon"}}></i> {{/if}}
+    <span class="muted">{{#if title.length}}{{title}}:{{/if}}</span>
+    {{selectionLabel}}
+    <span class="caret"></span>
+</button>
+<div class="picker-dropdown hide">
+    <div class="picker-dropdown-header">
+        <div class="input-append">
+            {{view Ember.TextField class="picker-query" placeholder="Search" valueBinding="query"}}
+            <button type="button" class="btn" {{action clearSelection}}><i class="icon-remove"></i></button>
+        </div>
+    </div>
+    <div class="picker-dropdown-body">
+        {{#if showList}}
+            {{view listView contentBinding="filteredContent"}}
+        {{else}}
+            <em class="muted" style="padding: 3px 20px;">Enter at least {{minimumCharacters}} characters.</em>
+        {{/if}}
+    </div>
+</div>

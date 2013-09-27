@@ -26,7 +26,8 @@ namespace Moravia.Timely
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap/bootstrap.css",
                 "~/Content/bootstrap/bootstrap-theme.css",
-                "~/Content/site.css"));
+                "~/Content/site.css",
+                "~/Client/components/dropdown-picker/picker.css"));
 
             //BundleTable.EnableOptimizations = true;
         }
