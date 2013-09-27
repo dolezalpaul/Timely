@@ -1,6 +1,6 @@
-﻿namespace Moravia.Timely.Models
+﻿namespace Moravia.Timely.ViewModels
 {
-    public class User : Entity
+    public class User : ViewModel
     {
         public string name { get; set; }
         public string email { get; set; }

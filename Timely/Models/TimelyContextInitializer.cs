@@ -11,12 +11,20 @@ namespace Moravia.Timely.Models
     {
         protected override void Seed(TimelyContext context)
         {
-            var products = new List<User>()
+            var users = new List<User>()
             {
-                new User() { name = "Administrator", email = "premyslk@moravia.com" }
+                new User() { name = "Administrator", email = "premyslk@moravia.com" },
+                new User() { name = "Guest", email = "premyslk@moravia.com" }
             };
 
-            products.ForEach(p => context.Users.Add(p));
+            users.ForEach(u => context.Users.Add(u));
+
+            var teams = new List<Team>()
+            {
+                new Team() { name = "Moravia", users = users }
+            };
+
+            teams.ForEach(t => context.Teams.Add(t));
         }
     }
 }

@@ -1,10 +1,13 @@
-﻿using System.Configuration;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using AutoMapper;
+using Moravia.Timely.Business;
+using Moravia.Timely.Controllers;
 using Moravia.Timely.Models;
 using SimpleInjector;
 using SimpleInjector.Extensions;
@@ -14,7 +17,7 @@ namespace Moravia.Timely
 {
     public static class ContainerConfig
     {
-        public static void RegisterContainer()
+        public static Container RegisterContainer()
         {
             // Create the container builder.
             var container = new Container();
@@ -34,16 +37,34 @@ namespace Moravia.Timely
             {
                 container.Register(controllerType);
             }
+            container.RegisterInitializer<IRestController>(controller => container.InjectProperties(controller));
+            container.RegisterSingleOpenGeneric(typeof(AutoRestMapper<,>), typeof(AutoRestMapper<,>));
+            container.RegisterInitializer<IAutoRestMapper>(arm => container.InjectProperties(arm));
 
             // Register your types, for instance:
-            container.RegisterPerWebRequest<TimelyContext>(() =>
+            container.RegisterPerWebRequest<DbContext>(() =>
             {
                 return new TimelyContext();
             }, true);
 
-            container.RegisterPerWebRequest<IPrincipal>(() => 
+            // Register Current User depending on the context
+            container.RegisterPerWebRequest<IPrincipal>(() =>
                 HttpContext.Current.User ?? WindowsPrincipal.Current);
 
+            // Register business components            
+            container.RegisterManyForOpenGeneric(
+                typeof(BusinessComponent<>),
+                (type, impls) => container.RegisterAll(type, impls),
+                typeof(BusinessComponent<>).Assembly);
+
+            // Register services
+            container.RegisterManyForOpenGeneric(typeof(Service<>), typeof(Service<>).Assembly);
+            container.RegisterSingleOpenGeneric(typeof(Service<>), typeof(Service<>));
+
+            // Business Initializers
+            container.RegisterInitializer<IBusinessComponent>(component => container.InjectProperties(component));
+            container.RegisterInitializer<IService>(service => container.InjectProperties(service));
+            
             // Verify the container configuration
             container.Verify();
 
@@ -53,6 +74,8 @@ namespace Moravia.Timely
 
             DependencyResolver.SetResolver(
                 new SimpleInjectorDependencyResolver(container));
+
+            return container;
         }
     }
 }

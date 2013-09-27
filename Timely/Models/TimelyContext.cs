@@ -20,6 +20,22 @@ namespace Moravia.Timely.Models
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Team> Teams { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Team>()
+                .HasMany(c => c.users)
+                .WithMany()
+                .Map(x =>
+                    {
+                        x.MapLeftKey("team_id");
+                        x.MapRightKey("user_id");
+                        x.ToTable("TeamMember");
+                    });
+            
+            base.OnModelCreating(modelBuilder);
+        }
 
         public override int SaveChanges()
         {

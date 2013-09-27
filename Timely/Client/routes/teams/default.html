@@ -1,0 +1,10 @@
+﻿<div class="col-md-3">
+    <div class="list-group">
+        {{#each team in controller}}
+            {{#linkTo 'team' team class="list-grou-item"}}{{name}}{{/linkTo}}
+        {{/each}}
+    </div>
+</div>
+<div class="col-md-9">
+    {{outlet}}
+</div>

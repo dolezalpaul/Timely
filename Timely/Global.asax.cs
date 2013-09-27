@@ -24,7 +24,8 @@ namespace Moravia.Timely
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ContainerConfig.RegisterContainer();
+            var container = ContainerConfig.RegisterContainer();
+            MapperConfig.RegisterMapper(container);
         }
 
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)

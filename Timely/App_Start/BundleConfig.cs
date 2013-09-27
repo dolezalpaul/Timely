@@ -21,7 +21,7 @@ namespace Moravia.Timely
                 "~/Scripts/fileuploader.js",
                 "~/Scripts/handlebars.js",
                 "~/Scripts/ember-1.0.0.debug.js",
-                "~/Scripts/ember-data-1.0.0-beta2.debug.js").IncludeDirectory("~/Client/", "*.js", true));
+                "~/Scripts/ember-data.js").IncludeDirectory("~/Client/", "*.js", true));
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap/bootstrap.css",
