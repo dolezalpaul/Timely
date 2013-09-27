@@ -100,10 +100,10 @@ namespace Moravia.Timely
         public virtual bool Delete(int id)
         {
             var entity = EntitySet.Find(id);
+            EntitySet.Remove(entity);
             entity = Resolve(entity);
             if (entity != null)
             {
-                EntitySet.Remove(entity);
                 Context.SaveChanges();
                 return true;
             }
