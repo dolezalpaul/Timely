@@ -27,8 +27,8 @@ namespace Moravia.Timely.Formatters
 
                 var serializer = JsonSerializer.Create(SerializerSettings);
 
-                Entity entity = data[prefix].ToObject(type, serializer) as Entity;
-                return entity;
+                ViewModel viewModel = data[prefix].ToObject(type, serializer) as ViewModel;
+                return viewModel;
             });
         }
 
