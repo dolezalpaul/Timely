@@ -240,6 +240,7 @@
     <Content Include="Client\models.js" />
     <Content Include="Client\router.js" />
     <Content Include="Client\routes\application.html" />
+    <Content Include="Client\routes\home\default.html" />
     <Content Include="Client\routes\index.html" />
     <Content Include="Client\routes\teams\default.html" />
     <Content Include="Client\routes\teams\route.js" />

@@ -8,4 +8,5 @@ App.Router.map(function () {
         this.resource('team', { path: '/:team_id' });
     });
     this.resource('users');
+    this.resource('home');
 });
